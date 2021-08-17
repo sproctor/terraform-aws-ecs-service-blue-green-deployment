@@ -27,6 +27,19 @@ data "aws_iam_policy_document" "execution_role" {
 
     resources = ["*"]
   }
+
+  statement {
+      sid    = "AllowReadSecrets"
+      effect = "Allow"
+
+      actions = [
+          "secretsmanager:GetResourcePolicy",
+          "secretsmanager:GetSecretValue",
+          "secretsmanager:DescribeSecret",
+          "secretsmanager:ListSecretVersionIds",
+          "secretsmanager:ListSecrets"
+      ]
+  }
 }
 
 data "aws_iam_policy_document" "task_role" {
