@@ -63,22 +63,3 @@ resource "aws_iam_role_policy" "task_role" {
 resource "aws_ecs_cluster" "this" {
   name = "${var.service_name}_cluster"
 }
-
-resource "aws_security_group" "ecs" {
-  name   = "${var.service_name}-allow-ecs"
-  vpc_id = "${var.vpc_id}"
-
-  ingress {
-    from_port       = 0
-    protocol        = "-1"
-    to_port         = 0
-    security_groups = ["${aws_security_group.alb.id}"]
-  }
-
-  egress {
-    from_port   = 0
-    protocol    = "-1"
-    to_port     = 0
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}

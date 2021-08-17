@@ -15,7 +15,7 @@ resource "aws_ecs_task_definition" "this" {
             name      = var.service_name
             portMappings = [
                 {
-                containerPort = var.port
+                containerPort = var.container_port
                 hostPort      = 80
                 protocol      = "tcp"
                 }
@@ -36,7 +36,7 @@ resource "aws_ecs_task_definition" "this" {
                     },
                     {
                         name  = "PORT"
-                        value = "${var.port}"
+                        value = "${var.container_port}"
                     }
                 ],
                 var.environment_list

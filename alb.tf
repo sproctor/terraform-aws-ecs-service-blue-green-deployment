@@ -37,7 +37,8 @@ resource "aws_lb_listener_rule" "this" {
   }
 
   condition {
-    field  = "host-header"
-    values = var.host_names
+    host_header {
+      values = var.host_names
+    }
   }
 }
