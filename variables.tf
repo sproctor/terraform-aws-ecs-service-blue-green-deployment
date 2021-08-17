@@ -22,11 +22,6 @@ variable "security_groups" {
   default     = []
 }
 
-variable "cluster" {
-  description = "Cluster used in ecs"
-  default     = ""
-}
-
 variable "role_service" {
   description = "Role for execution service"
   default     = ""

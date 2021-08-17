@@ -2,7 +2,7 @@
 resource "aws_ecs_service" "main" {
   count = 1
   name                 = var.name
-  cluster              = var.cluster
+  cluster              = "${var.name}-cluster"
   task_definition      = var.use_cloudwatch_logs ? aws_ecs_task_definition.main_cloudwatch[count.index].arn : aws_ecs_task_definition.main_elasticsearch_logs[count.index].arn
   scheduling_strategy  = "REPLICA"
   desired_count        = var.service_count
@@ -263,7 +263,7 @@ resource "aws_codedeploy_deployment_group" "main" {
   }
 
   ecs_service {
-    cluster_name = var.cluster
+    cluster_name = "${var.name}-cluster"
     service_name = aws_ecs_service.main[count.index].name
   }
 
@@ -312,7 +312,7 @@ resource "aws_codedeploy_deployment_group" "main" {
 resource "aws_appautoscaling_target" "main" {
   count = 1
   service_namespace  = "ecs"
-  resource_id        = "service/${var.cluster}/${aws_ecs_service.main[count.index].name}"
+  resource_id        = "service/${var.name}-cluster/${aws_ecs_service.main[count.index].name}"
   scalable_dimension = "ecs:service:DesiredCount"
   role_arn           = var.auto_scale_role
   min_capacity       = var.min_scale
