@@ -28,8 +28,7 @@ resource "aws_ecs_task_definition" "this" {
                     awslogs-stream-prefix = var.prefix_logs
                 }
             }
-            environment = concat(
-                [
+            environment = [
                     {
                         name  = "APP_NAME"
                         value = var.service_name
@@ -38,9 +37,7 @@ resource "aws_ecs_task_definition" "this" {
                         name  = "PORT"
                         value = "${var.container_port}"
                     }
-                ],
-                var.environment_list
-            )
+                ]
         }
     ])
 }
