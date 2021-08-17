@@ -32,12 +32,6 @@ resource "aws_ecs_service" "this" {
       task_definition,
     ]
   }
-
-  capacity_provider_strategy {
-    capacity_provider = "FARGATE_SPOT"
-    weight            = 100
-    base              = 1
-  }
 }
 
 data "aws_subnet_ids" "this" {
