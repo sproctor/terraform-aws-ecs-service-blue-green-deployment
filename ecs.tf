@@ -39,6 +39,8 @@ data "aws_iam_policy_document" "execution_role" {
           "secretsmanager:ListSecretVersionIds",
           "secretsmanager:ListSecrets"
       ]
+
+      resources = ["*"]
   }
 }
 

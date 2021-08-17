@@ -1,7 +1,7 @@
 resource "aws_ecs_task_definition" "this" {
   family                   = "${var.service_name}"
-  execution_role_arn       = "${aws_iam_role.execution_role.arn}"
-  task_role_arn            = "${aws_iam_role.task_role.arn}"
+  execution_role_arn       = aws_iam_role.execution_role.arn
+  task_role_arn            = aws_iam_role.task_role.arn
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
 
