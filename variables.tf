@@ -1,15 +1,17 @@
-variable "port" {
+variable "container_port" {
   description = "Port number exposed by container"
   type = number
 }
 
-variable "name" {
+variable "service_name" {
   description = "Name of service"
+  type = string
 }
 
 variable "service_count" {
   description = "Number of desired task"
   default     = 1
+  type        = number
 }
 
 variable "subnets" {
@@ -29,22 +31,20 @@ variable "role_service" {
 
 variable "vpc_id" {
   description = "VPC ID for create target group resources"
-  default     = ""
 }
 
 variable "lb_arn" {
   description = "The load balancer to allow all traffic"
-  default     = ""
 }
 
 variable "cpu_unit" {
   description = "Number of cpu units for container"
-  default     = 1024
+  default     = 256
 }
 
 variable "memory" {
   description = "Number of memory for container"
-  default     = 2048
+  default     = 512
 }
 
 variable "roleArn" {
@@ -126,7 +126,8 @@ variable "log_level" {
 }
 
 variable "health_check_path" {
-  default = "/health"
+  default = "/"
+  type    = "string"
 }
 
 variable "es_url" {
@@ -148,4 +149,10 @@ variable "environment_list" {
     name  = string
     value = string
   }))
+  default = []
+}
+
+variable "host_names" {
+  description = "Host name patterns. eg: [\"www.example.com\", \"example.com\"]"
+  type = list(string)
 }
