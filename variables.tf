@@ -127,7 +127,7 @@ variable "log_level" {
 
 variable "health_check_path" {
   default = "/"
-  type    = "string"
+  type    = string
 }
 
 variable "es_url" {
