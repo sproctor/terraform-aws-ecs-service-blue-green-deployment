@@ -156,3 +156,8 @@ variable "host_names" {
   description = "Host name patterns. eg: [\"www.example.com\", \"example.com\"]"
   type = list(string)
 }
+
+variable "cert_arn" {
+  description = "SSL Certificate ARN"
+  type = string
+}
