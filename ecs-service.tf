@@ -19,8 +19,6 @@ resource "aws_ecs_service" "this" {
     type = "CODE_DEPLOY"
   }
 
-  depends_on = [aws_lb_listener.this]
-
   network_configuration {
     // security_groups  = [aws_security_group.ecs]
     subnets          = data.aws_subnet_ids.this.ids
