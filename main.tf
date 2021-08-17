@@ -295,7 +295,7 @@ resource "aws_codedeploy_deployment_group" "main" {
       "DeploymentFailure",
     ]
 
-    trigger_name       = data.external.commit_message.result["message"]
+    trigger_name       = "${var.name}-deployment-trigger"
     trigger_target_arn = var.sns_topic_arn
   }
 
