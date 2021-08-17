@@ -33,8 +33,8 @@ variable "vpc_id" {
   description = "VPC ID for create target group resources"
 }
 
-variable "lb_arn" {
-  description = "The load balancer to allow all traffic"
+variable "lb_listener_arn" {
+  description = "The load balancer listener to attach our rules to"
 }
 
 variable "cpu_unit" {
@@ -155,9 +155,4 @@ variable "environment_list" {
 variable "host_names" {
   description = "Host name patterns. eg: [\"www.example.com\", \"example.com\"]"
   type = list(string)
-}
-
-variable "cert_arn" {
-  description = "SSL Certificate ARN"
-  type = string
 }
