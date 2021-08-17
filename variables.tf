@@ -148,5 +148,8 @@ variable "prefix_logs" {
 
 variable "environment_list" {
   description = "Environment variables in map-list format. eg: [{ name='foo', value='bar' }]"
-  type = list(map)
+  type = list(object({
+    name  = string
+    value = string
+  }))
 }
