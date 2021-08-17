@@ -75,7 +75,7 @@ resource "aws_codedeploy_deployment_group" "this" {
     enabled = true
     events  = ["DEPLOYMENT_FAILURE"]
   }
-  
+
   blue_green_deployment_config {
     deployment_ready_option {
       action_on_timeout = "CONTINUE_DEPLOYMENT"
@@ -100,7 +100,7 @@ resource "aws_codedeploy_deployment_group" "this" {
   load_balancer_info {
     target_group_pair_info {
       prod_traffic_route {
-        listener_arns = ["${aws_lb_listener.this.arn}"]
+        listener_arns = [var.lb_listener_arn]
       }
 
       target_group {
