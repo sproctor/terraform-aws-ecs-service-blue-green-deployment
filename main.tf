@@ -304,18 +304,6 @@ resource "aws_codedeploy_deployment_group" "main" {
   }
 }
 
-// Get commit message
-data "external" "commit_message" {
-  program = [
-    "node",
-    "-r",
-    "ts-node/register",
-    "git_message.ts",
-  ]
-
-  working_dir = "../scripts"
-}
-
 /*===========================================
               Autoscaling zone
 ============================================*/

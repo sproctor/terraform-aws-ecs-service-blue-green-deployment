@@ -4,7 +4,6 @@ variable "port" {
 
 variable "name" {
   description = "Name of service"
-  default     = ""
 }
 
 variable "service_count" {
@@ -84,7 +83,7 @@ variable "dummy_deps" {
 
 variable "port_test" {
   description = "Test port for codedeploy task rerouting traffic"
-  default     = ""
+  default     = "80"
 }
 
 variable "max_scale" {
@@ -149,4 +148,5 @@ variable "prefix_logs" {
 
 variable "environment_list" {
   description = "Environment variables in map-list format. eg: [{ name='foo', value='bar' }]"
+  type = list(map)
 }
