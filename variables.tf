@@ -1,5 +1,6 @@
 variable "port" {
   description = "Port number exposed by container"
+  type = number
 }
 
 variable "name" {
